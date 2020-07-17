@@ -7,7 +7,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.file.InvalidPathException;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import com.jesper.util.StringUtility;
@@ -15,8 +14,9 @@ import com.jesper.util.StringUtility;
 public class App {
 
 	public static void generateFileWithUniqueLines(int lines, String filePath) {
+		
 		try {
-			Path path = Paths.get(filePath);
+			Paths.get(filePath);
 		} catch (InvalidPathException e) {
 			throw new IllegalArgumentException("Invalid Path");
 		}

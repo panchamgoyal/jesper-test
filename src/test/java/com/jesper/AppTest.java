@@ -32,7 +32,8 @@ public class AppTest {
 	@Test
 	public void testFileLineLengthCheck() {
 		String path = "output.txt";
-		App.generateFileWithUniqueLines(50, path);
+		int lines = 50;
+		App.generateFileWithUniqueLines(lines, path);
 		try {
 			FileInputStream fis = new FileInputStream(path);
 			Scanner sc = new Scanner(fis);
@@ -45,29 +46,8 @@ public class AppTest {
 			}
 			fis.close();
 			sc.close();
-			if(lineNo != 50)
-				fail("No of lines is not 50");
-		} catch (FileNotFoundException e) {
-			fail("Output file not created");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	@Test
-	public void testCharacterCheck() {
-		String path = "output.txt";
-		App.generateFileWithUniqueLines(50, path);
-		try {
-			FileInputStream fis = new FileInputStream(path);
-			Scanner sc = new Scanner(fis);
-			while(sc.hasNextLine()) {
-				String line = sc.nextLine();
-				if(!line.matches("[A-Za-z0-9]+"))
-					fail("Non alphanumeric characters found");
-			}
-			sc.close();
-			fis.close();
+			if(lineNo != lines)
+				fail("No of lines is not " + lines);
 		} catch (FileNotFoundException e) {
 			fail("Output file not created");
 		} catch (IOException e) {
